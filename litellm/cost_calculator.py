@@ -432,9 +432,8 @@ def completion_cost(
         if completion_response is not None:
             # get input/output tokens from completion_response
             prompt_tokens = completion_response.get("usage", {}).get("prompt_tokens", 0)
-            completion_tokens = completion_response.get("usage", {}).get(
-                "completion_tokens", 0
-            )
+            completion_tokens = completion_response.get("usage", {}).get("completion_tokens", 0) or 0
+
             total_time = completion_response.get("_response_ms", 0)
             verbose_logger.debug(
                 f"completion_response response ms: {completion_response.get('_response_ms')} "
